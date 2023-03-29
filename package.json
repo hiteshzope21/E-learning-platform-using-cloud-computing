@@ -1,0 +1,21 @@
+{
+  "name": "e-learn",
+  "version": "1.0.0",
+  "description": "A full stack web application that acts as a portal for learners and educators. The educators can upload videos for their courses. The learners can watch these courses once they have brought the subscription.",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm install  && cd ../frontend && npm install && npm run build",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/"
+}
