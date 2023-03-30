@@ -304,12 +304,20 @@ User.watch().on("change", async () => {
 
   if(stats){
     console.log(stats);
-  const subscription = await User.find({ "subscription.status": "active" });
-  stats[0].users = await User.countDocuments();
-  stats[0].subscription = subscription.length;
-  stats[0].createdAt = new Date(Date.now());
+  const subs = await User.find({ "subscription.status": "active" });
+  const users = await User.countDocuments();
+  const subscription = subs.length;
+  const createdAt = new Date(Date.now());
 
-  await stats[0].save();
+  // await stats[0].save();
+  Stats.updateOne({_id:stats._id},{users:users,subscription:subscription,createdAt:createdAt},function(err,result){
+  if(err){
+    console.log("error: ",err);
+  }
+  if(result){
+    console.log("updated");
+  }
+  })
 }
 else{
 console.log("stats not found");

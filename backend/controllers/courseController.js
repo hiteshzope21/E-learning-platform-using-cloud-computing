@@ -165,8 +165,16 @@ console.log(stats);
   for (let i = 0; i < courses.length; i++) {
     totalViews += courses[i].views;
   }
-  stats.views = totalViews;
-  stats.createdAt = new Date(Date.now());
+  const views = totalViews;
+  const createdAt = new Date(Date.now());
+  Stats.updateOne({_id:stats._id},{views:views},function(err,result){
+    if(err){
+      console.log("err: ",err);
+    }
+    if(result){
+      console.log("updated successfully");
+    }
+  })
 
-  await stats.save();
+  // await stats.save();
 });
